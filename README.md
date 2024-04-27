@@ -5,7 +5,7 @@ Welcome to my Java Software Portfolio. In this repo, I have a "Hello World" java
 The purpose of this repo is to show my understanding of Java as required in CSE-310. Enjoy.
 
 
-[Hello World in Java Demo Video](http://youtube.link.goes.here)
+[Hello World in Java Demo Video](https://www.youtube.com/watch?v=YL4ix-Y9LLY)
 
 # Development Environment
 
