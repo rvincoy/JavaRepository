@@ -14,8 +14,8 @@ public class GradeBook {
         //provide a menu for the program
         do
         {
-            System.out.print("\033[H\033[2J");  
-            System.out.flush();
+            System.out.print("\033[H\033[2J");  //clears the screen
+            System.out.flush(); //places the cursor at the top left
             System.out.println("Menu Options:");
             System.out.println("  1. Add a Score");  
             System.out.println("  2. Compute Grade");
@@ -37,12 +37,12 @@ public class GradeBook {
                 grades=OpenFile();
             }
         } while (choice!=6);
-        scanner.close();
+        scanner.close(); //close the scanner as a good programming practice
     }
 
     //create a Grade class and for adding to the arraylist
     public static Grade AddGrade() {
-        Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in); //do not close this scanner since it will crash the program
         String type;
         double score, maxscore, weight;
         System.out.print("\033[H\033[2J"); //clear the screen 
@@ -56,8 +56,8 @@ public class GradeBook {
         System.out.print("Enter Type: ");
         scanner.nextLine();
         type = scanner.nextLine();
-        Grade grade=new Grade(score, maxscore, weight, type);
-        return grade;
+        Grade grade=new Grade(score, maxscore, weight, type); //this runs the Grade constructor
+        return grade; //this will return the grade class
     }
 
     //compute the grade and letter grade
@@ -148,10 +148,11 @@ public class GradeBook {
         System.out.print("\033[H\033[2J");  
         System.out.flush();
         System.out.println("Your grades are listed below:\n\n");
+        System.out.println("Score\tMax\tWeight\tType");
         for (Grade i : grades) {
             score = score + (i.getScore()*i.getWeight());
             maxscore = maxscore + (i.getMaxScore()*i.getWeight());
-            System.out.println(i.getScore() + " / " + i.getMaxScore() + "\t" + i.getType());
+            System.out.println(i.getScore() + "\t" + i.getMaxScore() + "\t" + i.getWeight() +"\t" + i.getType());
         }
         grade=score*100/maxscore;
         System.out.println("\nGrade: " + grade);
