@@ -1,3 +1,4 @@
+//this is the Grade class. it has getters and setters for encapsulation and constructors
 public class Grade {
     private double Score;
     private double MaxScore;

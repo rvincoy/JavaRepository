@@ -24,7 +24,7 @@ public class GradeBook {
             System.out.println("  5. Load from File");
             System.out.println("  6. Quit");
             System.out.print("Select a choice from the menu: ");
-            choice=scanner.nextInt();
+            choice=scanner.nextInt(); //integer user input
             if (choice==1) {
                 grades.add(AddGrade());
             } else if (choice==2) {
@@ -48,13 +48,13 @@ public class GradeBook {
         System.out.print("\033[H\033[2J"); //clear the screen 
         System.out.flush(); //place the cursor on the top left
         System.out.print("Enter Score: ");
-        score = scanner.nextDouble();
+        score = scanner.nextDouble(); //double user input
         System.out.print("Enter MaxScore: ");
         maxscore = scanner.nextDouble();
         System.out.print("Enter Weight: ");
         weight = scanner.nextDouble();
         System.out.print("Enter Type: ");
-        scanner.nextLine();
+        scanner.nextLine(); //without this code the program crashes when transitioning to a nextLine from nextDouble
         type = scanner.nextLine();
         Grade grade=new Grade(score, maxscore, weight, type); //this runs the Grade constructor
         return grade; //this will return the grade class
