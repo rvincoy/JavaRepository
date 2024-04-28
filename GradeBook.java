@@ -1,15 +1,17 @@
 import java.util.ArrayList; //import the Arraylist class
 import java.util.Scanner; //for user inputs
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.File; //import this class
+import java.io.FileNotFoundException; //import this class
 import java.io.FileWriter;   // Import the FileWriter class
 import java.io.IOException;  // Import the IOException class to handle errors
 
+//this is the main class that Java will execute
 public class GradeBook {
     public static void main(String[] args) throws InterruptedException {
         ArrayList<Grade> grades = new ArrayList<Grade>(); // Create an ArrayList object
         int choice;
         Scanner scanner = new Scanner(System.in);
+        //provide a menu for the program
         do
         {
             System.out.print("\033[H\033[2J");  
@@ -38,12 +40,13 @@ public class GradeBook {
         scanner.close();
     }
 
+    //create a Grade class and for adding to the arraylist
     public static Grade AddGrade() {
         Scanner scanner = new Scanner(System.in);
         String type;
         double score, maxscore, weight;
-        System.out.print("\033[H\033[2J");  
-        System.out.flush();
+        System.out.print("\033[H\033[2J"); //clear the screen 
+        System.out.flush(); //place the cursor on the top left
         System.out.print("Enter Score: ");
         score = scanner.nextDouble();
         System.out.print("Enter MaxScore: ");
@@ -57,7 +60,8 @@ public class GradeBook {
         return grade;
     }
 
-    public static void ComputeGrade(ArrayList<Grade> grades) throws InterruptedException {
+    //compute the grade and letter grade
+    public static void ComputeGrade(ArrayList<Grade> grades) throws InterruptedException { // the throws is for the pausing of the thread
         double score=0, maxscore=0, grade;
         String letterGrade="";
         System.out.print("\033[H\033[2J");  
@@ -111,9 +115,10 @@ public class GradeBook {
                 System.out.println("You got an " + letterGrade + ". Final Grade is " + grade);
         }
         System.out.println("\n\nPausing. Program will resume in 3 seconds.");
-        Thread.sleep(3000);
+        Thread.sleep(3000); //give the user time to read
     }
 
+    //save the grades to a file. the thought here is that the user will save it per subject for later edits.
     public static void SaveFile(ArrayList<Grade> grades) throws InterruptedException {
         Scanner scanner = new Scanner(System.in);
         String fname;
@@ -137,6 +142,7 @@ public class GradeBook {
         Thread.sleep(3000);
     }
 
+    //provides a way to display the grades on the screen
     public static void DisplayGrades(ArrayList<Grade> grades) throws InterruptedException {
         double score=0, maxscore=0, grade;
         System.out.print("\033[H\033[2J");  
@@ -153,6 +159,7 @@ public class GradeBook {
         Thread.sleep(3000);
     }
 
+    //reads the file and storing it into the grades arraylist
     public static ArrayList<Grade> OpenFile() throws InterruptedException {
         Scanner scanner = new Scanner(System.in);
         String fname, type;
@@ -167,8 +174,8 @@ public class GradeBook {
             Scanner myReader = new Scanner(myObj);
             while (myReader.hasNextLine()) {
                 String line = myReader.nextLine();
-                String[] parts = line.split(",");
-                score = Double.parseDouble(parts[0]);
+                String[] parts = line.split(","); //split the string by each column in the csv
+                score = Double.parseDouble(parts[0]); //convert the string to a double since casting is not allowed
                 maxscore = Double.parseDouble(parts[1]);
                 weight = Double.parseDouble(parts[2]);
                 type = parts[3];
