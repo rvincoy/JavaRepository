@@ -137,7 +137,7 @@ public class GradeBook {
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
-        System.out.println(fname);
+        //System.out.println(fname);
         System.out.println("\n\nPausing. Program will resume in 3 seconds.");
         Thread.sleep(3000);
     }
